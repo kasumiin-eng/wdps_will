@@ -72,33 +72,6 @@ add_action(
 			
 ?>
 
-<div class="hero">
-  <div class="swiper-container">
-    <div class="swiper-wrapper">
-      <div class="swiper-slide">
-        <div class="hero__title">
-          <h2><span>住宅のプロが提案する新しい価値と新しい住宅</span><span>あなただけの住宅を私たちは創造します</span></h2>
-        </div>
-        <div class="hero__btn"><a href="#"><span>会社案内</span></a></div>
-        <img src="http://localhost/wp-content/uploads/2021/04/adpDSC_6393-scaled.jpg" alt="" class="main-visual" />
-      </div>
-      <div class="swiper-slide">
-        <div class="hero__title">
-          <h2><span>住宅のプロが提案する新しい価値と新しい住宅</span><span>あなただけの住宅を私たちは創造します</span></h2>
-        </div>
-        <div class="hero__btn"><a href="#"><span>実績紹介</span></a></div>
-        <img src="http://localhost/wp-content/uploads/2021/04/freehairsalon.jpg" alt="" class="main-visual" />
-      </div>
-      <div class="swiper-slide">
-        <div class="hero__title">
-          <h2><span>住宅のプロが提案する新しい価値と新しい住宅</span><span>あなただけの住宅を私たちは創造します</span></h2>
-        </div>
-        <div class="hero__btn"><a href="#"><span>事業案内</span></a></div>
-        <img src="http://localhost/wp-content/uploads/2021/04/freehairsalon2.jpg" alt="" class="main-visual" />
-      </div>
-    </div>
-  </div>
-</div>
 
 <?php
 		}
