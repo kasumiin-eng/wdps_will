@@ -1,0 +1,10 @@
+.widget_recent_entries {
+  @extend %widget-core-list-base;
+
+  .post-date {
+    display: block;
+    color: _light($_color-text); // For IE11
+    color: _var-light-color-text();
+    @include _font-size-line-height(11px);
+  }
+}

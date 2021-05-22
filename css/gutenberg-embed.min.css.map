@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAEA,AAAA,IAAI,AAAC,CACH,QAAQ,CAAE,MAAM,CACjB,AAED,AACE,KADG,AAAA,wBAAwB,CACzB,GAAG,AAAC,CACJ,OAAO,CAAE,KAAK,CACf,AAHH,AAKE,KALG,AAAA,wBAAwB,CAK3B,oBAAoB,AAAC,CACnB,MAAM,CAAE,cACV,CAAC",
+    "sources": [
+        "../wp-content/themes/snow-monkey/vendor/inc2734/wp-oembed-blog-card/src/src/css/gutenberg-embed.scss"
+    ],
+    "names": [],
+    "file": "gutenberg-embed.min.css"
+}

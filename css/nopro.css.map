@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAEA,AAAA,mBAAmB,CAAC;EAClB,OAAO,EAAE,eAAe;CACzB",
+    "sources": [
+        "../wp-content/plugins/snow-monkey-blocks/block/taxonomy-terms/nopro.scss"
+    ],
+    "names": [],
+    "file": "nopro.css"
+}

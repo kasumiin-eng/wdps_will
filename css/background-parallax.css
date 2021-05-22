@@ -1,0 +1,37 @@
+.js-bg-parallax {
+  position: relative;
+  overflow: hidden;
+}
+
+.js-bg-parallax[data-is-loaded="true"] .js-bg-parallax__bgimage {
+  opacity: 1;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.js-bg-parallax[data-is-loaded="true"] .js-bg-parallax__bgimage > img {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  height: auto;
+  width: 100%;
+  min-height: 100%;
+  max-height: none;
+  will-change: transform;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+
+.js-bg-parallax__bgimage {
+  opacity: 0;
+  -webkit-transition: opacity .1s ease-in;
+  transition: opacity .1s ease-in;
+}
+
+.js-bg-parallax__content {
+  position: relative;
+}
+/*# sourceMappingURL=background-parallax.css.map */

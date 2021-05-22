@@ -1,0 +1,32 @@
+@charset 'utf-8';
+
+@import 'core/core';
+
+@import '../extension/editor';
+@import '../format/editor';
+@import '../style/editor';
+
+.sme-popover {
+  .components-popover__content {
+    min-width: 240px;
+    overflow: visible;
+  }
+}
+
+.sme-extension-panel {
+  .components-panel__icon {
+    fill: _light($_color-gray);
+  }
+
+  &--enabled .components-panel__icon {
+    fill: $color-accent;
+  }
+}
+
+.components-dropdown-menu__menu-item.has-text.has-icon .dashicon {
+  margin-right: 8px;
+}
+
+.sme-toolbar-button__indicator {
+  left: 14px;
+}

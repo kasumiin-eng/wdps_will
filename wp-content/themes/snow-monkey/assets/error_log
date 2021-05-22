@@ -1,0 +1,95 @@
+
+
+
+
+
+woocommerce-archive-product
+woocommerce-archive-product
+woocommerce-archive-product
+woocommerce-archive-product
+woocommerce-archive-product
+
+
+
+
+
+WP_Term Object
+(
+    [term_id] => 24
+    [name] => 未分類
+    [slug] => %e6%9c%aa%e5%88%86%e9%a1%9e
+    [term_group] => 0
+    [term_taxonomy_id] => 24
+    [taxonomy] => product_cat
+    [description] => 
+    [parent] => 0
+    [count] => 1
+    [filter] => raw
+)
+
+WP_Term Object
+(
+    [term_id] => 24
+    [name] => 未分類
+    [slug] => %e6%9c%aa%e5%88%86%e9%a1%9e
+    [term_group] => 0
+    [term_taxonomy_id] => 24
+    [taxonomy] => product_cat
+    [description] => 
+    [parent] => 0
+    [count] => 1
+    [filter] => raw
+)
+
+WP_Term Object
+(
+    [term_id] => 24
+    [name] => 未分類
+    [slug] => %e6%9c%aa%e5%88%86%e9%a1%9e
+    [term_group] => 0
+    [term_taxonomy_id] => 24
+    [taxonomy] => product_cat
+    [description] => 
+    [parent] => 0
+    [count] => 1
+    [filter] => raw
+)
+
+WP_Term Object
+(
+    [term_id] => 24
+    [name] => 未分類
+    [slug] => %e6%9c%aa%e5%88%86%e9%a1%9e
+    [term_group] => 0
+    [term_taxonomy_id] => 24
+    [taxonomy] => product_cat
+    [description] => 
+    [parent] => 0
+    [count] => 1
+    [filter] => raw
+)
+
+WP_Term Object
+(
+    [term_id] => 24
+    [name] => 未分類
+    [slug] => %e6%9c%aa%e5%88%86%e9%a1%9e
+    [term_group] => 0
+    [term_taxonomy_id] => 24
+    [taxonomy] => product_cat
+    [description] => 
+    [parent] => 0
+    [count] => 1
+    [filter] => raw
+)
+
+
+
+woocommerce-archive-product
+woocommerce-archive-product
+center
+center
+center
+center
+center
+center
