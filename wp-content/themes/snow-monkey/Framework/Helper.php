@@ -3,7 +3,7 @@
  * @package snow-monkey
  * @author inc2734
  * @license GPL-2.0+
- * @version 14.0.0
+ * @version 14.2.0
  */
 
 namespace Framework;
@@ -27,6 +27,43 @@ class Helper {
 	use WP_View_Controller\App\Contract\Template_Tag;
 
 	/**
+	 * get_template_part php files.
+	 *
+	 * @param string|array $directory_or_files Target directory (Full path or directory slug) or file slug list.
+	 * @param boolean      $exclude_underscore Exclude if true.
+	 */
+	public static function get_template_parts( $directory_or_files, $exclude_underscore = false ) {
+		if ( is_array( $directory_or_files ) ) {
+			$files = $directory_or_files;
+			if ( $exclude_underscore ) {
+				$files = array_filter(
+					$files,
+					function( $file_slug ) {
+						return 0 !== strpos( $file_slug, '_' );
+					}
+				);
+			}
+		} else {
+			$directory = $directory_or_files;
+			$files     = static::get_theme_files( $directory, $exclude_underscore );
+			if ( ! $files ) {
+				return $files;
+			}
+
+			$files = array_map(
+				function( $filename ) {
+					return str_replace( '.php', '', $filename );
+				},
+				$files
+			);
+		}
+
+		foreach ( $files as $file_slug ) {
+			WP_View_Controller\Helper::get_template_part( $file_slug );
+		}
+	}
+
+	/**
 	 * Return loading method.
 	 *
 	 * @param string $method Loading method.
@@ -46,18 +83,61 @@ class Helper {
 	 * @return void
 	 */
 	public static function load_files( $method, $directory, $exclude_underscore = false ) {
+		$template_directory   = realpath( get_template_directory() );
+		$stylesheet_directory = realpath( get_stylesheet_directory() );
+		$directory            = realpath( $directory );
+
+		if ( -1 !== strpos( $directory, $template_directory ) ) {
+			$directory_slug = ltrim( str_replace( $template_directory, '', $directory ), DIRECTORY_SEPARATOR );
+			$save_dir       = $template_directory . '/assets/load-files-target';
+			$bundle_file    = $save_dir . DIRECTORY_SEPARATOR . sha1( $directory_slug ) . '.php';
+
+			if ( file_exists( $bundle_file ) ) {
+				$files = include( $bundle_file );
+			}
+		}
+
 		switch ( Helper::_get_loading_method( $method, $directory ) ) {
 			case 'get_template_parts':
-				Helper::get_template_parts( $directory, $exclude_underscore );
+				if ( ! empty( $files ) && is_array( $files ) ) {
+					$search   = [];
+					$search[] = realpath( $template_directory );
+					$search[] = '.php';
+					if ( is_child_theme() ) {
+						$search[] = realpath( $stylesheet_directory );
+					}
+					$files = array_map(
+						function( $filepath ) use ( $search ) {
+							return ltrim( str_replace( $search, '', realpath( $filepath ) ), '/\\' );
+						},
+						$files
+					);
+				}
+				$directory_or_files = ! empty( $files ) && is_array( $files ) ? $files : $directory;
+				Helper::get_template_parts( $directory_or_files, $exclude_underscore );
 				break;
 			case 'load_theme_files':
-				Helper::load_theme_files( $directory, $exclude_underscore );
+				if ( ! empty( $files ) && is_array( $files ) ) {
+					$search   = [];
+					$search[] = $template_directory;
+					if ( is_child_theme() ) {
+						$search[] = $stylesheet_directory;
+					}
+					$files = array_map(
+						function( $filepath ) use ( $search ) {
+							return str_replace( $search, '', realpath( $filepath ) );
+						},
+						$files
+					);
+				}
+				$directory_or_files = ! empty( $files ) && is_array( $files ) ? $files : $directory;
+				Helper::load_theme_files( $directory_or_files, $exclude_underscore );
 				break;
 			default:
-				Helper::include_files( $directory, $exclude_underscore );
+				$directory_or_files = ! empty( $files ) && is_array( $files ) ? $files : $directory;
+				Helper::include_files( $directory_or_files, $exclude_underscore );
 		}
 	}
-
 
 	/**
 	 * Return output positions of eyecatch.
@@ -477,71 +557,6 @@ class Helper {
 	}
 
 	/**
-	 * get_template_part php files
-	 *
-	 * @param string  $directory Target directory.
-	 * @param boolean $exclude_underscore Exclude if true.
-	 * @return void
-	 */
-	public static function get_template_parts( $directory, $exclude_underscore = false ) {
-		$directory = realpath( $directory );
-		if ( ! is_dir( $directory ) ) {
-			return;
-		}
-
-		$template_directory = realpath( get_template_directory() );
-
-		$iterator = new RecursiveDirectoryIterator( $directory, FilesystemIterator::SKIP_DOTS );
-		$iterator = new RecursiveIteratorIterator( $iterator );
-
-		$files = [];
-
-		foreach ( $iterator as $file ) {
-			if ( ! $file->isFile() ) {
-				continue;
-			}
-
-			if ( 'php' !== $file->getExtension() ) {
-				continue;
-			}
-
-			if ( $exclude_underscore && 0 === strpos( $file->getBasename(), '_' ) ) {
-				continue;
-			}
-
-			$files[] = realpath( $file->getPathname() );
-		}
-
-		if ( ! $files ) {
-			return;
-		}
-
-		usort(
-			$files,
-			function( $a, $b ) {
-				$adeps = substr_count( $a, DIRECTORY_SEPARATOR );
-				$bdeps = substr_count( $b, DIRECTORY_SEPARATOR );
-
-				if ( $adeps === $bdeps ) {
-					return 0;
-				}
-
-				return $adeps > $bdeps ? 1 : -1;
-			}
-		);
-
-		foreach ( $files as $filepath ) {
-			$template_name = str_replace(
-				[ $template_directory . DIRECTORY_SEPARATOR, '.php' ],
-				'',
-				$filepath
-			);
-
-			WP_View_Controller\Helper::get_template_part( $template_name );
-		}
-	}
-
-	/**
 	 * Return true when IE.
 	 *
 	 * @return boolean
@@ -553,5 +568,33 @@ class Helper {
 
 		$browser = strtolower( $_SERVER['HTTP_USER_AGENT'] );
 		return strstr( $browser, 'trident' ) || strstr( $browser, 'msie' );
+	}
+
+	/**
+	 * Callback for excerpt_length
+	 *
+	 * @param null|int $num_words      Number of words.
+	 * @param string   $entries_layout Layout of entries.
+	 * @param int      $number         The maximum number of words. Default 55.
+	 * @return int
+	 */
+	public static function entry_summary_content_excerpt_length( $num_words, $entries_layout, $number = null ) {
+		if ( null !== $num_words ) {
+			return $num_words;
+		}
+
+		if ( is_null( $number ) ) {
+			// phpcs:disable WordPress.WP.I18n.MissingArgDomain
+			$number = _x( '55', 'excerpt_length' );
+			// phpcs:enable
+		}
+
+		if ( in_array( $entries_layout, [ 'rich-media', 'carousel' ], true ) ) {
+			$num_words            = 25;
+			$excerpt_length_ratio = 55 / $number;
+			return $num_words / $excerpt_length_ratio;
+		}
+
+		return $number;
 	}
 }

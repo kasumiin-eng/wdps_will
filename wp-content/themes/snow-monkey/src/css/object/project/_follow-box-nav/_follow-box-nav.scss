@@ -25,7 +25,7 @@
     align-items: center;
     justify-content: center;
     color: #fff;
-    @include _circle($_base-font-size-px * 2);
+    @include _circle(2rem);
   }
 
   [data-icon="amazon"] {
@@ -170,5 +170,9 @@
 
   [data-icon="tiktok"] {
     background-color: map-get($social-icon-colors, 'tiktok');
+  }
+
+  [data-icon="note"] {
+    background-color: map-get($social-icon-colors, 'note');
   }
 }

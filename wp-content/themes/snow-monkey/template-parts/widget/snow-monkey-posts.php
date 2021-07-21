@@ -3,7 +3,7 @@
  * @package snow-monkey
  * @author inc2734
  * @license GPL-2.0+
- * @version 13.1.2
+ * @version 14.2.0
  */
 
 use Framework\Helper;
@@ -20,12 +20,17 @@ $args = wp_parse_args(
 		'_infeed_ads'          => get_option( 'mwt-google-infeed-ads' ),
 		'_item_thumbnail_size' => 'medium_large',
 		'_item_title_tag'      => 'h3',
+		'_display_item_meta'   => null,
+		'_display_item_terms'  => null,
 		'_link_text'           => null,
 		'_link_url'            => null,
 		'_posts_query'         => null,
 		'_title'               => null,
 		'_vertical'            => false,
 		'_widget_area_id'      => null,
+		'_arrows'              => false,
+		'_dots'                => true,
+		'_interval'            => 0,
 	]
 );
 
@@ -90,6 +95,14 @@ $force_sm_1col = $args['_force_sm_1col'] ? 'true' : 'false';
 	$archive_view = get_theme_mod( $_post_type . '-archive-view' );
 	$archive_view = $archive_view ? $archive_view : $_post_type;
 
+	if ( is_null( $args['_display_item_meta'] ) ) {
+		$args['_display_item_meta'] = 'post' === $archive_view ? true : false;
+	}
+
+	if ( is_null( $args['_display_item_terms'] ) ) {
+		$args['_display_item_terms'] = 'post' === $archive_view ? true : false;
+	}
+
 	Helper::get_template_part(
 		'template-parts/common/entries/entries',
 		$archive_view,
@@ -101,7 +114,12 @@ $force_sm_1col = $args['_force_sm_1col'] ? 'true' : 'false';
 			'_infeed_ads'          => $args['_infeed_ads'],
 			'_item_thumbnail_size' => $args['_item_thumbnail_size'],
 			'_item_title_tag'      => $args['_item_title_tag'],
+			'_display_item_meta'   => $args['_display_item_meta'],
+			'_display_item_terms'  => $args['_display_item_terms'],
 			'_posts_query'         => $args['_posts_query'],
+			'_arrows'              => $args['_arrows'],
+			'_dots'                => $args['_dots'],
+			'_interval'            => $args['_interval'],
 		]
 	);
 	?>

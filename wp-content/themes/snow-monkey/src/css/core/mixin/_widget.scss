@@ -5,7 +5,7 @@
  */
 @mixin widget-title() {
   @include _margin(0, 0, .5);
-  @include _font-size-line-height($_base-font-size-px);
+  @include _font-size-line-height(1);
   font-weight: bold;
   display: var(--widget-title-display);
   flex-direction: var(--widget-title-flex-direction);
@@ -81,7 +81,7 @@
   border-bottom: 1px solid transparent;
   border-bottom-color: _lighter($_color-gray); // For IE11
   border-bottom-color: _var-lighter-color-gray();
-  @include _margin(.25, 0, 0);
+  @include _margin(.25, 0, 0, 0, false);
   @include _padding(.25, 0);
 
   &[data-is-hidden="false"] {

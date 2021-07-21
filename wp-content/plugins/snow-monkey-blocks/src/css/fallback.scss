@@ -16,9 +16,17 @@
 .#{$_prefix}c-row {
   @include _row();
 
+  &--reverse {
+    flex-direction: row-reverse;
+  }
+
   @each $size, $screen-min in $_sizes {
     @include _media-min($screen-min) {
       $prefix: _size-prefix($size);
+
+      &#{$prefix}-middle {
+        align-items: center;
+      }
 
       &#{$prefix}-margin {
         @include _row--margin(1);

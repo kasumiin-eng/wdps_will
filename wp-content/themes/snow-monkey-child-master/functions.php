@@ -65,7 +65,7 @@ add_action(
 	'snow_monkey_prepend_entry_content',
 	function() {
 		?>
-		<a class="c-btn c-btn--block c-blinking" href="<?php echo esc_url( home_url( '/snow_monkey_prepend_entry_content' ) ); ?>" role="button">ここをカスタマイズする</a>
+		<!--<a class="c-btn c-btn--block c-blinking" href=" <?php echo esc_url( home_url( '/snow_monkey_prepend_entry_content' ) ); ?> " role="button">ここをカスタマイズする</a> -->
 		<?php
 	}
 );

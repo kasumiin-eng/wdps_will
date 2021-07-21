@@ -1,5 +1,5 @@
 import forEachHtmlNodes from '@inc2734/for-each-html-nodes';
-import BasisDrawer from '../../vendor/inc2734/wp-basis/src/assets/packages/sass-basis/src/js/_drawer';
+//import { drawers } from '../../vendor/inc2734/wp-basis/src/assets/packages/sass-basis/src/js/_drawer';
 
 import { getDrawerNav, getBody } from './module/_helper';
 
@@ -16,24 +16,19 @@ const setNoscroll = () => {
 /**
  * Drawer hash nav main proccess.
  */
-const applyDrawerHashNav = (link) => link.addEventListener(
-  'click',
-  (event) => {
-    const drawer = getDrawerNav();
-    if (! drawer) {
-      return;
-    }
+const applyDrawerHashNav = (link) => {
+  const drawer = getDrawerNav();
+  if (! drawer) {
+    return;
+  }
 
-    event.stopPropagation();
+  const id = drawer.getAttribute('id');
+  if (! id) {
+    return;
+  }
 
-    'false' === drawer.getAttribute('aria-hidden')
-      ? BasisDrawer.close(drawer)
-      : BasisDrawer.open(drawer);
-
-    return false;
-  },
-  false
-);
+  link.setAttribute('data-basis-drawer-toggle-btn', id);
+}
 
 /**
  * Overlay widget area hash nav main process.

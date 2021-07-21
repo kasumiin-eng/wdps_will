@@ -1,5 +1,29 @@
 #Changelog
 
+## May 19, 2021 14.0.0
+* Refactoring JavaScript code.
+* `.c-drawer-close-zone` is generated automatically.
+* Remove event `clickDrawerCloseZone`.
+* Add event `closeDrawerCloseZone`.
+* Remove all static methods of `BasisDrawerCloseZone`.
+* Remove all static methods of `BasisDrawer`.
+
+## April 29, 2021 13.0.2
+* Update calculating line-height.
+
+## April 22, 2021 13.0.1
+* Add `_var-margin-scale()` to `.c-row`, `_row()` and `_lattice()`.
+
+## April 22, 2021 13.0.0
+* Abandon `$_base-font-size`.
+* Abandon `$_between-lines`.
+* Avandon `_vertical-rhythm()`.
+* `$_base-line-height` cannot be overwritten.
+* Add `$_half-leading`.
+* Add `_var-half-leading()`.
+* Add `_container-padding()`.
+* Support safe area at `.c-container` and `_container()`.
+
 ## March 12, 2021 12.4.0
 * Add `$apply-space-scale` arg and `$apply-margin-scale` arg to `_space()`
 

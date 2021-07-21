@@ -13,11 +13,26 @@
 
   > .alignleft,
   > .alignright {
-    margin-top: $_between-lines;
+    margin-top: 0;
+    @include _margin-bottom(1);
   }
+
+  .alignleft {
+    @include _margin-right(1);
+  }
+
+  .alignright {
+    @include _margin-left(1);
+  }
+}
+
+figure.wp-block-image,
+.wp-block-image > figure {
+  padding-top: $_half-leading * 1rem;
+  padding-bottom: $_half-leading * 1rem;
 }
 
 img.alignleft,
 img.alignright {
-  margin-top: $_between-lines;
+  margin-top: $_half-leading * 1rem;
 }

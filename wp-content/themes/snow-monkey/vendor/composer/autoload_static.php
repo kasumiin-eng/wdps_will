@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit320c7bbc660fee3525df18982e1bf708
+class ComposerStaticInit39d444a9a5f4484a4ef0e470f17a628f
 {
     public static $prefixLengthsPsr4 = array (
         'I' => 
@@ -21,6 +21,7 @@ class ComposerStaticInit320c7bbc660fee3525df18982e1bf708
             'Inc2734\\WP_Like_Me_Box\\' => 23,
             'Inc2734\\WP_Helper\\' => 18,
             'Inc2734\\WP_Google_Fonts\\' => 24,
+            'Inc2734\\WP_GitHub_Theme_Updater\\' => 32,
             'Inc2734\\WP_Customizer_Framework\\' => 32,
             'Inc2734\\WP_Custom_CSS_To_Editor\\' => 32,
             'Inc2734\\WP_Contents_Outline\\' => 28,
@@ -85,6 +86,10 @@ class ComposerStaticInit320c7bbc660fee3525df18982e1bf708
         array (
             0 => __DIR__ . '/..' . '/inc2734/wp-google-fonts/src',
         ),
+        'Inc2734\\WP_GitHub_Theme_Updater\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/inc2734/wp-github-theme-updater/src',
+        ),
         'Inc2734\\WP_Customizer_Framework\\' => 
         array (
             0 => __DIR__ . '/..' . '/inc2734/wp-customizer-framework/src',
@@ -130,9 +135,9 @@ class ComposerStaticInit320c7bbc660fee3525df18982e1bf708
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit320c7bbc660fee3525df18982e1bf708::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit320c7bbc660fee3525df18982e1bf708::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit320c7bbc660fee3525df18982e1bf708::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit39d444a9a5f4484a4ef0e470f17a628f::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit39d444a9a5f4484a4ef0e470f17a628f::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit39d444a9a5f4484a4ef0e470f17a628f::$classMap;
 
         }, null, ClassLoader::class);
     }

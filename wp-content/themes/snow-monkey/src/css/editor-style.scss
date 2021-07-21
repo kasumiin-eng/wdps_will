@@ -8,7 +8,7 @@
 }
 
 :root {
-  --wp-block-width: var(--_container-max-width, 1280px);
+  --wp-block-width: calc(var(--_container-max-width, 1280px) - 2rem);
 }
 
 #tinymce {
@@ -21,7 +21,7 @@
 }
 
 body {
-  padding: 50px 0;
+  padding: 0 0 2em;
 }
 
 [data-align="full"] + [data-align="full"] {
@@ -38,22 +38,11 @@ body {
 
 // @see src/css/foundation/_wordpress/_align/_align.scss
 .block-editor-writing-flow .block-editor-block-list__layout.is-root-container {
-  > [data-align="full"],
-  > [data-align="wide"],
   [class*="smb-"] > [data-align="full"],
   [class*="smb-"] > [data-align="wide"] {
-    clear: both;
     @include alignfull();
-
-    &.wp-block-image {
-      img {
-        width: 100%;
-        max-width: none;
-      }
-    }
   }
 
-  > [data-align="wide"],
   [class*="smb-"] > [data-align="wide"] {
     @include _media-min(lg) {
       position: relative;
@@ -73,10 +62,6 @@ body {
       max-height: none !important;
     }
   }
-}
-
-.wp-block[data-type="core/list"] {
-  margin-left: 1.5em;
 }
 
 [data-type="core/html"] {
@@ -116,6 +101,15 @@ body {
 .wp-block-embed {
   .components-sandbox {
     margin-bottom: -8px; // @todo
+  }
+}
+
+// Cancels the default style
+[data-align="full"] .wp-block-group {
+  &.has-background > .wp-block-group__inner-container > [data-align="full"] {
+    margin-right: auto;
+    margin-left: auto;
+    width: auto;
   }
 }
 

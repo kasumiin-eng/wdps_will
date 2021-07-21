@@ -27,24 +27,24 @@ class InstalledVersions
 private static $installed = array (
   'root' => 
   array (
-    'pretty_version' => '11.3.1',
-    'version' => '11.3.1.0',
+    'pretty_version' => '11.4.1',
+    'version' => '11.4.1.0',
     'aliases' => 
     array (
     ),
-    'reference' => '0d1610d931074ddae4d1d48a8553e1b1f98495a5',
+    'reference' => '8056ce193d63f66d231b907542b1bf8bed5138d5',
     'name' => '__root__',
   ),
   'versions' => 
   array (
     '__root__' => 
     array (
-      'pretty_version' => '11.3.1',
-      'version' => '11.3.1.0',
+      'pretty_version' => '11.4.1',
+      'version' => '11.4.1.0',
       'aliases' => 
       array (
       ),
-      'reference' => '0d1610d931074ddae4d1d48a8553e1b1f98495a5',
+      'reference' => '8056ce193d63f66d231b907542b1bf8bed5138d5',
     ),
   ),
 );
@@ -227,9 +227,23 @@ return $installed[0]['root'];
 
 
 
+
 public static function getRawData()
 {
+@trigger_error('getRawData only returns the first dataset loaded, which may not be what you expect. Use getAllRawData() instead which returns all datasets for all autoloaders present in the process.', E_USER_DEPRECATED);
+
 return self::$installed;
+}
+
+
+
+
+
+
+
+public static function getAllRawData()
+{
+return self::getInstalled();
 }
 
 

@@ -1,5 +1,5 @@
 $_base-font-size-px: 16px !default;
-$_between-lines: (1rem / 2.6) !default;
+$_half-leading: .4 !default;
 $_container-max-width: 1280px !default;
 $_transition-duration: .2s !default;
 $_base-margin-bottom: 1 !default;
@@ -13,6 +13,7 @@ $_border-radius: 6px !default;
 $color-accent: #cd162c !default;
 $one-column-slim-max-width: 46rem !default;
 $border-bottom-width: 1px !default;
+$editor-gutter: 1rem;
 $_font-family: system-ui, -apple-system, BlinkMacSystemFont, "ヒラギノ角ゴ W3", sans-serif !default;
 $img-path: '../img' !default;
 $social-icon-colors: (
@@ -52,4 +53,5 @@ $social-icon-colors: (
   discord: #7289da,
   apple: #000,
   tiktok: #000,
+  note: #40C9B4,
 );

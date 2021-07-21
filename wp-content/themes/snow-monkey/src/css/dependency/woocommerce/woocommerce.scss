@@ -58,7 +58,7 @@ $img-path: '../../../img';
 
 .woocommerce form .form-row input.input-text,
 .woocommerce form .form-row textarea {
-  @include _font-size-line-height($_base-font-size-px);
+  @include _font-size-line-height(1);
 }
 
 .woocommerce-input-wrapper,
@@ -120,7 +120,7 @@ $img-path: '../../../img';
   > header > h2,
   > form > h3 {
     @include _margin-bottom(.25);
-    @include _font-size-line-height($_base-font-size-px * 1.25);
+    @include _font-size-line-height(1.25);
   }
 
   > header + .shop_table {
@@ -129,7 +129,7 @@ $img-path: '../../../img';
 }
 
 .woocommerce .woocommerce-MyAccount-content .my_account_orders {
-  @include _font-size-line-height($_base-font-size-px);
+  @include _font-size-line-height(1);
 }
 
 .woocommerce-MyAccount-navigation {
@@ -180,7 +180,8 @@ $img-path: '../../../img';
 
 // Buttons
 .#{ $_prefix }l-container .#{ $_prefix }l-contents #respond #submit,
-.#{ $_prefix }l-container .#{ $_prefix }l-contents .button {
+.#{ $_prefix }l-container .#{ $_prefix }l-contents .button,
+.wc-block-grid .wp-block-button .wp-block-button__link {
   @include _transition(all);
   border-radius: $_border-radius; // for IE11
   border-radius: _var-border-radius();
@@ -350,6 +351,7 @@ $img-path: '../../../img';
 // Archive
 .related.products,
 .woocommerce ul.products {
+  clear: both;
   @include _margin-top(1.5);
 }
 
@@ -365,17 +367,71 @@ $img-path: '../../../img';
   @include _font-size-line-height($_base-font-size-px - 2);
 }
 
-// Product title in loop
-.woocommerce-loop-product__title {
+// Product title in loop, Product title in the all product block
+.woocommerce-loop-product__title,
+.wc-block-grid .wc-block-grid__product-title {
   color: _light($_color-text); // For IE11
   color: _var-light-color-text();
-  @include _font-size-line-height($_base-font-size-px);
+  @include _font-size-line-height(1);
   font-weight: normal;
+  padding: .5em 0;
+  margin: 0;
+}
+.wc-block-grid .wc-block-grid__product-title > a {
+  color: inherit;
+  text-decoration: none;
 }
 
-// Star rating in loop
-.woocommerce .star-rating span::before {
+// The select box for sort in the Some product blocks
+.wc-block-grid {
+  .wc-block-sort-select {
+    text-align: right;
+  }
+}
+
+// Some product blocks
+.wc-block-grid__product {
+  text-align: initial;
+}
+
+// Block link in the some product blocks
+.wc-block-grid__product-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+// Product image in the all product block
+.wc-block-grid .wc-block-grid__product-image {
+  margin: 0 0 1em;
+
+  img {
+    border: 1px solid #f2f2f2;
+  }
+}
+
+// Product price in the all product block
+.wc-block-grid .price {
+  font-weight: bold;
+}
+
+// Cart button in the all product block
+.wc-block-grid .wp-block-button .wp-block-button__link {
+  color: #515151;
+  background-color: #ebe9eb;
+  padding: .618em 1em;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+// Star rating in loop, Star rating in some product blocks
+.woocommerce .star-rating span::before,
+.wc-block-grid__product-rating .star-rating span:before,
+.wc-block-grid__product-rating .wc-block-grid__product-rating__stars span:before {
   color: #f2b611;
+}
+.wc-block-grid__product-rating .star-rating,
+.wc-block-grid__product-rating .wc-block-grid__product-rating__stars {
+  width: auto;
 }
 
 // Price in loop and single
@@ -388,7 +444,7 @@ $img-path: '../../../img';
 // Cart total in cart page
 .woocommerce .cart_totals h2 {
   @include _margin-bottom(.25);
-  @include _font-size-line-height($_base-font-size-px * 1.25);
+  @include _font-size-line-height(1.25);
 }
 
 // Headings in checkout page
@@ -397,7 +453,7 @@ $img-path: '../../../img';
 .woocommerce h3[id="order_review_heading"],
 .woocommerce h3[id="ship-to-different-address"] {
   @include _margin-bottom(.25);
-  @include _font-size-line-height($_base-font-size-px * 1.25);
+  @include _font-size-line-height(1.25);
 }
 .woocommerce [id="customer_details"] {
   @include _margin-bottom(1);
@@ -416,7 +472,7 @@ $img-path: '../../../img';
 // My account > edit-address
 .woocommerce-Addresses .woocommerce-Address-title h3 {
   @include _margin-bottom(.25);
-  @include _font-size-line-height($_base-font-size-px * 1.25);
+  @include _font-size-line-height(1.25);
 }
 
 // Product category widget

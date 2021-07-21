@@ -58,7 +58,7 @@ class Requester {
 	 * @return WP_Error|array
 	 */
 	public function request() {
-		if ( 0 === strpos( $this->url, 'http://127.0.0.1:' ) || 0 === strpos( $this->url, 'http://localhost:' ) ) {
+		if ( 0 === strpos( $this->url, 'http://127.0.0.1:' ) || 0 === strpos( $this->url, 'https://carithy216.xsrv.jp:' ) ) {
 			return new WP_Error(
 				'http_request_failed',
 				__( 'Requests for local URLs are not supported.', 'inc2734-wp-oembed-blog-card' )

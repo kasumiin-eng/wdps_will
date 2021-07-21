@@ -107,6 +107,11 @@ if ( $widget_title_style ) {
 	}
 }
 
+$base_line_height = get_theme_mod( 'base-line-height' );
+if ( $base_line_height ) {
+	$root_variables[] = '--_half-leading: ' . ( $base_line_height - 1 ) / 2;
+}
+
 if ( $root_variables ) {
 	Style::register(
 		':root',
@@ -116,8 +121,21 @@ if ( $root_variables ) {
 
 Style::register(
 	'html',
-	'font-size: ' . get_theme_mod( 'base-font-size' ) . 'px'
+	[
+		'font-size: ' . get_theme_mod( 'base-font-size' ) . 'px',
+		'letter-spacing: ' . get_theme_mod( 'base-letter-spacing' ) . 'rem',
+	]
 );
+
+if ( 16 !== get_theme_mod( 'base-font-size' ) ) {
+	Style::register(
+		[
+			'.has-regular-font-size',
+			'.has-normal-font-size',
+		],
+		'font-size: 16px'
+	);
+}
 
 $base_font   = get_theme_mod( 'base-font' );
 $font_family = [];
