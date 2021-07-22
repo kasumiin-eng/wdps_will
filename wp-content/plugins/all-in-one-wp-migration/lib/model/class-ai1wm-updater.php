@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (C) 2014-2018 ServMask Inc.
+ * Copyright (C) 2014-2020 ServMask Inc.
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -23,6 +23,10 @@
  * ╚══════╝╚══════╝╚═╝  ╚═╝  ╚═══╝  ╚═╝     ╚═╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	die( 'Kangaroos cannot jump here' );
+}
+
 class Ai1wm_Updater {
 
 	/**
@@ -42,14 +46,12 @@ class Ai1wm_Updater {
 		$extensions = Ai1wm_Extensions::get();
 
 		// View details page
-		if ( isset( $args->slug ) && isset( $extensions[ $args->slug ] ) && $action === 'plugin_information' ) {
-
-			// Get current updates
-			$updates = get_option( AI1WM_UPDATER, array() );
+		if ( isset( $extensions[ $args->slug ] ) && $action === 'plugin_information' ) {
+			$updater = get_option( AI1WM_UPDATER, array() );
 
 			// Plugin details
-			if ( isset( $updates[ $args->slug ] ) && ( $details = $updates[ $args->slug ] ) ) {
-				return (object) $details;
+			if ( isset( $updater[ $args->slug ] ) ) {
+				return (object) $updater[ $args->slug ];
 			}
 		}
 
@@ -65,34 +67,45 @@ class Ai1wm_Updater {
 	public static function update_plugins( $transient ) {
 		global $wp_version;
 
+		// Creating default object from empty value
+		if ( ! is_object( $transient ) ) {
+			$transient = (object) array();
+		}
+
 		// Get extensions
 		$extensions = Ai1wm_Extensions::get();
 
 		// Get current updates
-		$updates = get_option( AI1WM_UPDATER, array() );
+		$updater = get_option( AI1WM_UPDATER, array() );
 
 		// Get extension updates
-		foreach ( $updates as $slug => $update ) {
+		foreach ( $updater as $slug => $update ) {
 			if ( isset( $extensions[ $slug ] ) && ( $extension = $extensions[ $slug ] ) ) {
-				if ( get_option( $extension['key'] ) ) {
+				if ( ( $purchase_id = get_option( $extension['key'] ) ) ) {
+
+					// Get download URL
+					if ( $slug === 'all-in-one-wp-migration-file-extension' ) {
+						$download_url = add_query_arg( array( 'siteurl' => get_site_url() ), sprintf( '%s', $update['download_link'] ) );
+					} else {
+						$download_url = add_query_arg( array( 'siteurl' => get_site_url() ), sprintf( '%s/%s', $update['download_link'], $purchase_id ) );
+					}
+
+					// Set plugin details
+					$plugin_details = (object) array(
+						'slug'        => $slug,
+						'new_version' => $update['version'],
+						'url'         => $update['homepage'],
+						'plugin'      => $extension['basename'],
+						'package'     => $download_url,
+						'tested'      => $wp_version,
+						'icons'       => $update['icons'],
+					);
+
+					// Enable manual and auto updates
 					if ( version_compare( $extension['version'], $update['version'], '<' ) ) {
-
-						// Get Site URL
-						$url = urlencode( get_site_url() );
-
-						// Get Purchase ID
-						$key = get_option( $extension['key'] );
-
-						// Set plugin details
-						$transient->response[ $extension['basename'] ] = (object) array(
-							'slug'        => $slug,
-							'new_version' => $update['version'],
-							'url'         => $update['homepage'],
-							'plugin'      => $extension['basename'],
-							'package'     => sprintf( '%s/%s?siteurl=%s', $update['download_link'], $key, $url ),
-							'tested'      => $wp_version,
-							'icons'       => $update['icons'],
-						);
+						$transient->response[ $extension['basename'] ] = $plugin_details;
+					} else {
+						$transient->no_update[ $extension['basename'] ] = $plugin_details;
 					}
 				}
 			}
@@ -104,49 +117,56 @@ class Ai1wm_Updater {
 	/**
 	 * Check for extension updates
 	 *
-	 * @return void
+	 * @return boolean
 	 */
 	public static function check_for_updates() {
-		// Get current updates
-		$updates = get_option( AI1WM_UPDATER, array() );
+		$updater = get_option( AI1WM_UPDATER, array() );
 
 		// Get extension updates
 		foreach ( Ai1wm_Extensions::get() as $slug => $extension ) {
-			$response = wp_remote_get( $extension['about'], array(
-				'timeout' => 15,
-				'headers' => array( 'Accept' => 'application/json' ),
-			) );
+			$about = wp_remote_get(
+				$extension['about'],
+				array(
+					'timeout' => 15,
+					'headers' => array( 'Accept' => 'application/json' ),
+				)
+			);
 
-			// Add updates
-			if ( ! is_wp_error( $response ) ) {
-				if ( ( $response = json_decode( $response['body'], true ) ) ) {
-					// Slug is mandatory
-					if ( ! isset( $response['slug'] ) ) {
-						return;
+			// Add plugin updates
+			if ( ! is_wp_error( $about ) ) {
+				$body = wp_remote_retrieve_body( $about );
+				if ( ( $data = json_decode( $body, true ) ) ) {
+					if ( isset( $data['slug'], $data['version'], $data['homepage'], $data['download_link'] ) ) {
+						$updater[ $slug ] = $data;
 					}
+				}
+			}
 
-					// Version is mandatory
-					if ( ! isset( $response['version'] ) ) {
-						return;
+			// Add plugin messages
+			if ( $slug !== 'all-in-one-wp-migration-file-extension' ) {
+				if ( ( $purchase_id = get_option( $extension['key'] ) ) ) {
+					$check = wp_remote_get(
+						add_query_arg( array( 'site_url' => get_site_url(), 'admin_email' => get_option( 'admin_email' ) ), sprintf( '%s/%s', $extension['check'], $purchase_id ) ),
+						array(
+							'timeout' => 15,
+							'headers' => array( 'Accept' => 'application/json' ),
+						)
+					);
+
+					// Add plugin checks
+					if ( ! is_wp_error( $check ) ) {
+						$body = wp_remote_retrieve_body( $check );
+						if ( ( $data = json_decode( $body, true ) ) ) {
+							if ( isset( $updater[ $slug ], $data['message'] ) ) {
+								$updater[ $slug ]['update_message'] = $data['message'];
+							}
+						}
 					}
-
-					// Homepage is mandatory
-					if ( ! isset( $response['homepage'] ) ) {
-						return;
-					}
-
-					// Download link is mandatory
-					if ( ! isset( $response['download_link'] ) ) {
-						return;
-					}
-
-					$updates[ $slug ] = $response;
 				}
 			}
 		}
 
-		// Set new updates
-		update_option( AI1WM_UPDATER, $updates );
+		return update_option( AI1WM_UPDATER, $updater );
 	}
 
 	/**
@@ -157,32 +177,23 @@ class Ai1wm_Updater {
 	 * @return array
 	 */
 	public static function plugin_row_meta( $links, $file ) {
-		$modal = 0;
+		$modal_index = 0;
 
 		// Add link for each extension
 		foreach ( Ai1wm_Extensions::get() as $slug => $extension ) {
-			$modal++;
+			$modal_index++;
 
 			// Get plugin details
 			if ( $file === $extension['basename'] ) {
-				$url = add_query_arg( array( 'ai1wm_updater' => 1 ), network_admin_url( 'plugins.php' ) );
 
-				// Check Purchase ID
+				// Get updater URL
+				$updater_url = add_query_arg( array( 'ai1wm_check_for_updates' => 1, 'ai1wm_nonce' => wp_create_nonce( 'ai1wm_check_for_updates' ) ), network_admin_url( 'plugins.php' ) );
+
+				// Check purchase ID
 				if ( get_option( $extension['key'] ) ) {
-
-					// Add "Check for updates" link
-					$links[] = Ai1wm_Template::get_content( 'updater/check', array(
-						'url' => wp_nonce_url( $url, 'ai1wm_updater_nonce' ),
-					) );
-
+					$links[] = Ai1wm_Template::get_content( 'updater/check', array( 'url' => $updater_url ) );
 				} else {
-
-					// Add modal
-					$links[] = Ai1wm_Template::get_content( 'updater/modal', array(
-						'url'   => wp_nonce_url( $url, 'ai1wm_updater_nonce' ),
-						'modal' => $modal,
-					) );
-
+					$links[] = Ai1wm_Template::get_content( 'updater/modal', array( 'url' => $updater_url, 'modal' => $modal_index ) );
 				}
 			}
 		}

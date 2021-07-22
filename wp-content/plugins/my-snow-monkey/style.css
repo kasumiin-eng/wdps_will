@@ -1,0 +1,159 @@
+body {
+	background-color: white;
+	font-family:遊ゴシック体;
+}
+
+/*header tel reservartion */
+.header-btn {
+	display: inline-block;
+	float: left;
+}
+.header-btn_btn {
+	float: right;
+}
+.top-phone {
+	font-size: 25px;
+	padding-right: 10px;
+	font-weight: bold;
+}
+/*header color*/
+.l-header__content {
+	background-color: #EEE5DB;
+}
+/*#F2EFEA F8F5E4*/
+/*header*/
+.c-site-branding__title{
+	font-size: 30px;
+}
+.my-header-content {
+    display: flex;
+    align-items: flex-end;
+}
+.my-header-content__button .c-btn {
+    margin: 0 1rem 0 0;
+}
+/*固定ページ　アイキャッチ*/
+/*.c-page-header__title {
+	color: #6c442a;
+}*/
+/*.c-page-header__content {
+	color: black;
+}*/
+/*SmartSlider*/
+/*.n2-ss-layers-container n2-ss-slide-limiter n2-ow {
+	display: block;
+	margin: 0 auto;
+	
+}*/
+/*LINE隙間は直接固定ページに*/
+
+/*ここをカスタマイズするを消す*/
+.c-btn {
+	display: none;
+}
+.trouble-example{
+	background-color: #FFFFFF;
+}
+
+
+
+/*???*/
+/*.koe{
+	background-color: white;
+}
+.approach {
+	border: 4px solid;
+	border-color: #031de2;
+}*/
+.c-entry__title{
+	display: none;
+}
+.p-breadcrumbs-wrapper {
+    display: none;
+}
+
+/*footer syoujou*/
+footer {
+	color: #6c442a;
+	background-color: #F2EFEA;
+}
+
+/*firsttime tyuuou*/
+.aisatsu {
+	display: block;
+	margin: 0 auto;
+}
+/*voice tyuuou*/
+.voice {
+	display: block;
+	margin: 0 auto;
+}
+/*Googlemap*/
+.map{
+	display: block;
+	margin: 0 auto;
+}
+
+/*LINEモバイル画像*/
+/*.sme-hidden-lg-up sme-hidden-md {
+	  vertical-align: bottom;
+   margin: 0 ;
+   padding: 0;
+}*/
+
+/*frontaccess-button*/
+.is-style-ghost {
+	display: inline-block;
+	height: 46px;
+  cursor: pointer;
+  transition: all 0.3s ease 0s;
+}
+.is-style-ghost:hover {
+	background: #e2d2c7;
+	border-radius: 7px;
+}
+
+.wp-block-column .smb-btn {
+	display: inline-block;
+	height: 46px;
+  cursor: pointer;
+  transition: all 0.3s ease 0s;
+}
+.wp-block-column .smb-btn:hover {
+	background-color: #e2d2c7;
+	color: #6c442a;
+	border-radius: 7px;
+}
+.smb-btn {
+	width: 165px;
+}
+/*hiza delete*/
+/*.c-page-header__content h1{
+	display: none;
+}*/
+/*LINEボタン隙間消す*/
+
+/*モバイルfooter bar bottom*/
+.p-footer-sticky-nav {
+	font-size: 20px;
+	color: white;
+	padding: 0px;
+    margin: 0 auto;
+
+}
+.footernav_tel {
+    background-color: #6b1800;
+    padding: 5px;
+    font-size: 30px;
+}
+.footernav_line {
+    background-color: #0BB404;
+    padding: 5px;
+    font-size: 20px;
+}
+.footernav_youtube {
+    background-color: #DA6669;
+    padding: 5px;
+    font-size: 20px;
+}
+
