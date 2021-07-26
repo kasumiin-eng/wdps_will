@@ -1,5 +1,5 @@
 body {
-	background-color: white;
+	background-color: #FDFBF2;
 	font-family:遊ゴシック体;
 }
 
@@ -18,7 +18,7 @@ body {
 }
 /*header color*/
 .l-header__content {
-	background-color: #EEE5DB;
+	background-color: #F2EAE2;
 }
 /*#F2EFEA F8F5E4*/
 /*header*/
@@ -33,9 +33,9 @@ body {
     margin: 0 1rem 0 0;
 }
 /*固定ページ　アイキャッチ*/
-/*.c-page-header__title {
+.c-page-header__title {
 	color: #6c442a;
-}*/
+}
 /*.c-page-header__content {
 	color: black;
 }*/
@@ -157,3 +157,13 @@ footer {
     font-size: 20px;
 }
 
+.front-access {
+	background-color: white;
+}
+/*
+.l-contents__inner {
+	margin-bottom: 0 auto;
+	padding-bottom: 0 auto;
+}
+
+*/

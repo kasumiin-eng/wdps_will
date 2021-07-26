@@ -26,10 +26,10 @@
 
 // ** MySQL 設定 - この情報はホスティング先から入手してください。 ** //
 /** WordPress のためのデータベース名 */
-define( 'DB_NAME', 'carithy216_snmonprac' );
+define( 'DB_NAME', 'carithy216_taksub' );
 
 /** MySQL データベースのユーザー名 */
-define( 'DB_USER', 'carithy216_tak' );
+define( 'DB_USER', 'carithy216_tak2' );
 
 /** MySQL データベースのパスワード */
 define( 'DB_PASSWORD', 'taktaktaktak' );
