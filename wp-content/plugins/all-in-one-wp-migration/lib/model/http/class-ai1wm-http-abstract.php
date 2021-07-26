@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (C) 2014-2020 ServMask Inc.
+ * Copyright (C) 2014-2018 ServMask Inc.
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -23,24 +23,32 @@
  * ╚══════╝╚══════╝╚═╝  ╚═╝  ╚═══╝  ╚═╝     ╚═╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
-	die( 'Kangaroos cannot jump here' );
-}
+abstract class Ai1wm_Http_Abstract {
 
-class Ai1wm_Import_Permalinks {
+	protected $headers = array(
+		'Accept'          => '*/*',
+		'Accept-Encoding' => '*',
+		'Accept-Charset'  => '*',
+		'Accept-Language' => '*',
+		'User-Agent'      => 'Mozilla/5.0',
+	);
 
-	public static function execute( $params ) {
-		global $wp_rewrite;
-
-		// Set progress
-		Ai1wm_Status::info( __( 'Getting WordPress permalinks settings...', AI1WM_PLUGIN_NAME ) );
-
-		// Get using permalinks
-		$params['using_permalinks'] = (int) $wp_rewrite->using_permalinks();
-
-		// Set progress
-		Ai1wm_Status::info( __( 'Done getting WordPress permalinks settings.', AI1WM_PLUGIN_NAME ) );
-
-		return $params;
+	public function __construct() {
+		// Set user agent
+		if ( isset( $_SERVER['HTTP_USER_AGENT'] ) ) {
+			$this->headers['User-Agent'] = $_SERVER['HTTP_USER_AGENT'];
+		}
 	}
+
+	public function set_header( $key, $value ) {
+		$this->headers[ $key ] = $value;
+
+		return $this;
+	}
+
+	public function get_header( $key ) {
+		return $this->headers[ $key ];
+	}
+
+	abstract public function get( $url, $blocking = false );
 }

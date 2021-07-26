@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (C) 2014-2020 ServMask Inc.
+ * Copyright (C) 2014-2018 ServMask Inc.
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -23,9 +23,40 @@
  * ╚══════╝╚══════╝╚═╝  ╚═╝  ╚═══╝  ╚═╝     ╚═╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
-	die( 'Kangaroos cannot jump here' );
-}
-?>
+class Ai1wm_Resolve_Controller {
 
-<a href="https://servmask.com/products/backblaze-b2-extension" target="_blank">Backblaze B2</a>
+	public static function resolve( $params = array() ) {
+
+		// Set params
+		if ( empty( $params ) ) {
+			$params = stripslashes_deep( $_REQUEST );
+		}
+
+		// Set secret key
+		$secret_key = null;
+		if ( isset( $params['secret_key'] ) ) {
+			$secret_key = trim( $params['secret_key'] );
+		}
+
+		try {
+			// Ensure that unauthorized people cannot access resolve action
+			ai1wm_verify_secret_key( $secret_key );
+		} catch ( Ai1wm_Not_Valid_Secret_Key_Exception $e ) {
+			exit;
+		}
+
+		// Set IP address
+		if ( isset( $params['url_ip'] ) && ( $ip = $params['url_ip'] ) ) {
+			update_option( AI1WM_URL_IP, $ip );
+		}
+
+		// Set adapter
+		if ( isset( $params['url_adapter'] ) && ( $adapter = $params['url_adapter'] ) ) {
+			if ( $adapter === 'curl' ) {
+				update_option( AI1WM_URL_ADAPTER, 'curl' );
+			} else {
+				update_option( AI1WM_URL_ADAPTER, 'stream' );
+			}
+		}
+	}
+}
