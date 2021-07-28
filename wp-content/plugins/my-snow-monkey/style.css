@@ -3,6 +3,7 @@ body {
 	font-family:遊ゴシック体;
 }
 
+
 /*header tel reservartion */
 .header-btn {
 	display: inline-block;
@@ -160,10 +161,4 @@ footer {
 .front-access {
 	background-color: #F8F1E2;
 }
-/*
-.l-contents__inner {
-	margin-bottom: 0 auto;
-	padding-bottom: 0 auto;
-}
 
-*/
