@@ -29,7 +29,7 @@
 define( 'DB_NAME', 'carithy216_taksub' );
 
 /** MySQL データベースのユーザー名 */
-define( 'DB_USER', 'cartihy216_tak2' );
+define( 'DB_USER', 'carithy216_tak2' );
 
 /** MySQL データベースのパスワード */
 define( 'DB_PASSWORD', 'taktaktaktak' );
