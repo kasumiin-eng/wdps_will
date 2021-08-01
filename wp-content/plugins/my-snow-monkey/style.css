@@ -36,14 +36,6 @@ body {
 	color: #6c442a;
 }
 
-/*ここをカスタマイズするを消す*/
-/*.c-btn {
-	display: none;
-}
-.trouble-example{
-	background-color: #FFFFFF;
-}*/
-
 /*footer syoujou*/
 footer {
 	color: #6c442a;
@@ -72,6 +64,7 @@ footer {
 	height: 46px;
   cursor: pointer;
   transition: all 0.3s ease 0s;
+  text-align: center;
 }
 .is-style-ghost:hover {
 	background: #e2d2c7;
@@ -83,6 +76,7 @@ footer {
 	height: 46px;
   cursor: pointer;
   transition: all 0.3s ease 0s;
+  text-align: center;
 }
 .wp-block-column .smb-btn:hover {
 	background-color: #e2d2c7;
@@ -91,6 +85,7 @@ footer {
 }
 .smb-btn {
 	width: 165px;
+	text-align: center;
 }
 
 
@@ -121,4 +116,3 @@ footer {
 .front-access {
 	background-color: #F8F1E2;
 }
-
