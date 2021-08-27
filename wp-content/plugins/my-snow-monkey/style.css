@@ -2,7 +2,9 @@ body {
 	background-color: #FDFBF2;
 	font-family:遊ゴシック体;
 }
-
+/***********************
+* header
+***********************/
 /*header tel reservartion */
 .header-btn {
 	display: inline-block;
@@ -35,18 +37,47 @@ body {
 .c-page-header__title {
 	color: #6c442a;
 }
+/***********************
+* front 
+***********************/
+.front__nayami1 {
+	border-radius: 15px;
+	border: 1px solid;
+	border-color: #6c442a;
+	background: white;
+}
+.front__nayami2 {
+	border-radius: 15px;
+	border: 1px solid;
+	border-color: #6c442a;
+	background: #F2EAE2;
+}
+/***********************
+* first time
+***********************/
 
-/*footer syoujou*/
-footer {
-	color: #6c442a;
-	background-color: #F2EFEA;
+/*profile*/
+.firsttime__profile {
+	border: 1px solid;
+	border-color: #6c442a;
+	background: white;
+	width: 100%;
+	padding: 10px;
+}
+.firsttime__recommend {
+	border: 1px solid;
+	border-color: #6c442a;
+	width: 100%;
+	padding: 10px;
+	background-color: white;
+}
+.firsttime__recommend--message {
+	padding-top: 40px;
 }
 
-/*firsttime tyuuou*/
-.aisatsu {
-	display: block;
-	margin: 0 auto;
-}
+/***********************
+* voice
+***********************/
 /*voice tyuuou*/
 .voice {
 	display: block;
@@ -56,6 +87,31 @@ footer {
 .map{
 	display: block;
 	margin: 0 auto;
+}
+.voice__contents {
+	padding: 20px;
+	border: 1px solid;
+	border-color: #6c442a;
+	background: white;
+	width: 80%;
+	margin: 20px 110px 20px auto;
+}
+.voice__contents--txt {
+	font-size: 20px;
+	font-weight: bold;
+	text-align: center;
+}
+.voice__contents--title {
+	display: flex;
+	justify-content: center;
+	width: 800px;
+	margin: 20px auto;
+	font-size: 15px;
+
+}
+.voice__contents--title--syoujou {
+	padding: 15px;
+	list-style: none;
 }
 
 /*frontaccess-button*/
@@ -86,10 +142,19 @@ footer {
 .smb-btn {
 	width: 165px;
 	text-align: center;
+	padding: 5px;
+}
+/***********************
+* footer
+***********************/
+
+/*footer syoujou*/
+footer {
+	color: #6c442a;
+	background-color: #F2EFEA;
 }
 
-
-/*モバイルfooter bar bottom*/
+/*mobile footer bar bottom*/
 .p-footer-sticky-nav {
 	font-size: 20px;
 	color: white;
