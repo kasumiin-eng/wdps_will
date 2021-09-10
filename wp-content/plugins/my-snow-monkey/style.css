@@ -2,6 +2,10 @@ body {
 	background-color: #FDFBF2;
 	font-family:遊ゴシック体;
 }
+.smb-btn {
+	color: white;
+	background: #9C7753;
+}
 /***********************
 * header
 ***********************/
@@ -37,20 +41,30 @@ body {
 .c-page-header__title {
 	color: #6c442a;
 }
+/*menu*/
+.menu__small {
+	color: #80a404;
+}
+
+.c-navbar__item  a small{
+	color: #80a404;
+}
 /***********************
 * front 
 ***********************/
 .front__nayami1 {
-	border-radius: 15px;
-	border: 1px solid;
-	border-color: #6c442a;
+	
 	background: white;
+	
 }
 .front__nayami2 {
-	border-radius: 15px;
-	border: 1px solid;
-	border-color: #6c442a;
+	
 	background: #F2EAE2;
+	
+}
+.front__access {
+	background-color: #F8F1E2;
+	margin: 0;
 }
 /***********************
 * first time
@@ -176,8 +190,4 @@ footer {
     background-color: #DA6669;
     padding: 5px;
     font-size: 20px;
-}
-
-.front-access {
-	background-color: #F8F1E2;
 }
