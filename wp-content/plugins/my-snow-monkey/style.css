@@ -102,16 +102,17 @@ body {
 	display: block;
 	margin: 0 auto;
 }
+/*PC*/
 .voice__contents {
 	padding: 20px;
 	border: 1px solid;
-	border-color: #6c442a;
+	border-color: #86674d;
 	background: white;
 	width: 80%;
 	margin: 20px 110px 20px auto;
 }
 .voice__contents--txt {
-	font-size: 20px;
+	font-size: 25px;
 	font-weight: bold;
 	text-align: center;
 }
@@ -120,21 +121,73 @@ body {
 	justify-content: center;
 	width: 800px;
 	margin: 20px auto;
-	font-size: 15px;
+	font-size: 20px;
 
 }
 .voice__contents--title--syoujou {
 	padding: 15px;
 	list-style: none;
 }
+/*iPad*/
+.voice__contents--md {
+	border: 1px solid;
+	border-color: #86674d;
+	background: white;
+	padding: 20px;
+}
+.voice__contents--md--txt {
+	font-size: 20px;
+	font-weight: bold;
+	text-align: center;
+	padding-bottom: 20px;
+}
+.voice__contents--md--title {
+	display: flex;
+	justify-content: center;
+	
+}
+.voice__contents--md--title1 {
+	list-style: none;
+	padding: 10px;
+}
+.voice__contents--md--title2 {
+	list-style: none;
+	padding: 10px;
+}
+.voice__contents--md--title--syoujou {
+	padding: 10px;
+}
+/*mobile*/
+.voice__contents--sm {
+	border: 1px solid;
+	border-color: #86674d;
+	background: white;
+}
+.voice__contents--sm--txt {
+	padding: 15px 0;
+	text-align: center;
+}
+.voice__contents--sm--title {
+	padding: 25px;
+	list-style: none;
+	text-align: center;
+}
+.voice__contents--sm--title--syoujou {
+	padding: 10px;
+	font-size: 15px;
+}
+/*患者様の声　背景*/
+.voice__card {
+	box-shadow: 20px 100px 0 #F2EAE2;
+}
 
 /*frontaccess-button*/
 .is-style-ghost {
 	display: inline-block;
 	height: 46px;
-  cursor: pointer;
-  transition: all 0.3s ease 0s;
-  text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+    text-align: center;
 }
 .is-style-ghost:hover {
 	background: #e2d2c7;
@@ -144,9 +197,9 @@ body {
 .wp-block-column .smb-btn {
 	display: inline-block;
 	height: 46px;
-  cursor: pointer;
-  transition: all 0.3s ease 0s;
-  text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+    text-align: center;
 }
 .wp-block-column .smb-btn:hover {
 	background-color: #e2d2c7;
@@ -190,4 +243,14 @@ footer {
     background-color: #DA6669;
     padding: 5px;
     font-size: 20px;
+}
+
+/*投稿ページ　下部削除*/
+.c-entry-aside {
+	display: none;
+}
+
+/*LINEお問い合わせ  Mobile 隙間*/
+.wp-block-image>figure, figure.wp-block-image {
+	padding: 0 !important;
 }
