@@ -245,12 +245,20 @@ footer {
     font-size: 20px;
 }
 
-/*投稿ページ　下部削除*/
-.c-entry-aside {
-	display: none;
-}
 
 /*LINEお問い合わせ  Mobile 隙間*/
 .wp-block-image>figure, figure.wp-block-image {
 	padding: 0 !important;
+}
+/********************
+* approach
+********************/
+.approach__syoujou {
+	border: 1px solid;
+	border-color: #86674d;
+	box-shadow: 20px 20px 0 #F2EAE2;
+	padding: 30px;
+}
+.approach__syoujou--cause {
+	padding: 10px;
 }
