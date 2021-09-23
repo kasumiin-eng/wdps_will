@@ -37,7 +37,7 @@
     "export:db": "mkdir -p .export/sql && npm run wp 'db export .export/sql/local.sql'",
     "export": "run-p export:*",
     "wp-env": "wp-env",
-    "start": "wp-env start && open https://tak-test.tech:8888",
+    "start": "wp-env start && open http://localhost:8888",
     "stop": "npm run export && wp-env stop",
     "cli": "wp-env run cli",
     "wp": "wp-env run cli wp",

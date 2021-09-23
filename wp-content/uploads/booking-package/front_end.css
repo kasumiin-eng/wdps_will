@@ -1,0 +1,53 @@
+input[type="text"] {
+    
+}
+
+button {
+    padding: 8px 20px;
+    border-width: 1px;
+    border-radius: 8px;
+}
+#booking-package button {
+    background-color: #86674d;
+    color: white;
+}
+
+#booking-package .sun {
+    
+}
+
+#booking-package .mon {
+    
+}
+
+#booking-package .tue {
+    
+}
+
+#booking-package .wed {
+    
+}
+
+#booking-package .thu {
+    
+}
+
+#booking-package .fri {
+    
+}
+
+#booking-package .sat {
+    
+}
+
+#booking-package .nationalHoliday {
+    
+}
+
+#booking-package .goToBookingFormButton {
+    
+}
+
+#booking-package .bookingButton {
+    
+}

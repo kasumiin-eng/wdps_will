@@ -39,7 +39,7 @@ body {
 }
 /*固定ページ　アイキャッチ*/
 .c-page-header__title {
-	color: #6c442a;
+	color: #86674d;
 }
 /*menu*/
 .menu__small {
@@ -53,12 +53,12 @@ body {
 * front 
 ***********************/
 .front__nayami1 {
-	
+	padding: 50px 0px;
 	background: white;
 	
 }
 .front__nayami2 {
-	
+	padding: 50px 0px;
 	background: #F2EAE2;
 	
 }
@@ -180,7 +180,6 @@ body {
 .voice__card {
 	box-shadow: 20px 100px 0 #F2EAE2;
 }
-
 /*frontaccess-button*/
 .is-style-ghost {
 	display: inline-block;
@@ -188,10 +187,11 @@ body {
     cursor: pointer;
     transition: all 0.3s ease 0s;
     text-align: center;
+	vertical-align: middle;
 }
 .is-style-ghost:hover {
 	background: #e2d2c7;
-	border-radius: 7px;
+	border-radius: 15px;
 }
 
 .wp-block-column .smb-btn {
@@ -204,12 +204,19 @@ body {
 .wp-block-column .smb-btn:hover {
 	background-color: #e2d2c7;
 	color: #6c442a;
-	border-radius: 7px;
+	border-radius: 15px;
 }
 .smb-btn {
 	width: 165px;
 	text-align: center;
-	padding: 5px;
+	vertical-align: middle;
+	padding: 8px;
+}
+/***********************
+* system
+***********************/
+.system__fee {
+	padding: 16px;
 }
 /***********************
 * footer
@@ -239,7 +246,7 @@ footer {
     padding: 5px;
     font-size: 20px;
 }
-.footernav_youtube {
+.footernav_form {
     background-color: #DA6669;
     padding: 5px;
     font-size: 20px;
@@ -261,4 +268,28 @@ footer {
 }
 .approach__syoujou--cause {
 	padding: 10px;
+}
+.symptom__sports {
+	
+}
+/********************
+* blog 
+********************/
+.c-meta {
+	display: none;
+}
+/********************
+* blog voice
+********************/
+/*投稿ページ文字ヘッダー消す*/
+.c-entry__header {
+	display: none;
+}
+/*投稿ページ画像部分下げる*/
+.voice__img {
+	padding-top: 90px;
+}
+
+.calender {
+	background-color: white;
 }

@@ -381,7 +381,7 @@ function isValidAuthority(authority) {
  *
  * @example
  * ```js
- * const path1 = getPath( 'https://tak-test.tech:8080/this/is/a/test?query=true' ); // 'this/is/a/test'
+ * const path1 = getPath( 'http://localhost:8080/this/is/a/test?query=true' ); // 'this/is/a/test'
  * const path2 = getPath( 'https://wordpress.org/help/faq/' ); // 'help/faq'
  * ```
  *
@@ -425,7 +425,7 @@ function isValidPath(path) {
  *
  * @example
  * ```js
- * const queryString = getQueryString( 'https://tak-test.tech:8080/this/is/a/test?query=true#fragment' ); // 'query=true'
+ * const queryString = getQueryString( 'http://localhost:8080/this/is/a/test?query=true#fragment' ); // 'query=true'
  * ```
  *
  * @return {string|void} The query string part of the URL.
@@ -564,7 +564,7 @@ function isValidQueryString(queryString) {
  *
  * @example
  * ```js
- * const pathAndQueryString1 = getPathAndQueryString( 'https://tak-test.tech:8080/this/is/a/test?query=true' ); // '/this/is/a/test?query=true'
+ * const pathAndQueryString1 = getPathAndQueryString( 'http://localhost:8080/this/is/a/test?query=true' ); // '/this/is/a/test?query=true'
  * const pathAndQueryString2 = getPathAndQueryString( 'https://wordpress.org/help/faq/' ); // '/help/faq'
  * ```
  *
@@ -588,7 +588,7 @@ function getPathAndQueryString(url) {
  *
  * @example
  * ```js
- * const fragment1 = getFragment( 'https://tak-test.tech:8080/this/is/a/test?query=true#fragment' ); // '#fragment'
+ * const fragment1 = getFragment( 'http://localhost:8080/this/is/a/test?query=true#fragment' ); // '#fragment'
  * const fragment2 = getFragment( 'https://wordpress.org#another-fragment?query=true' ); // '#another-fragment'
  * ```
  *
