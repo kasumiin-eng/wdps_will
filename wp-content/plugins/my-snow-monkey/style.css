@@ -1,47 +1,14 @@
 body {
 	background-color: #FDFBF2;
-	font-family:遊ゴシック体;
-}
-.smb-btn {
-	color: white;
-	background: #9C7753;
 }
 /***********************
-* header
+* ヘッダー
 ***********************/
-/*header tel reservartion */
-.header-btn {
-	display: inline-block;
-	float: left;
-}
-.header-btn_btn {
-	float: right;
-}
-.top-phone {
-	font-size: 25px;
-	padding-right: 10px;
-	font-weight: bold;
-}
 /*header color*/
 .l-header__content {
 	background-color: #F2EAE2;
 }
-/*header*/
-.c-site-branding__title{
-	font-size: 30px;
-}
-.my-header-content {
-    display: flex;
-    align-items: flex-end;
-}
-.my-header-content__button .c-btn {
-    margin: 0 1rem 0 0;
-}
-/*固定ページ　アイキャッチ*/
-.c-page-header__title {
-	color: #86674d;
-}
-/*menu*/
+/*menu small letter*/
 .menu__small {
 	color: #80a404;
 }
@@ -50,27 +17,69 @@ body {
 	color: #80a404;
 }
 /***********************
-* front 
+* フッター 
 ***********************/
-.front__nayami1 {
+
+/*フッター 症状*/
+footer {
+	color: #6c442a;
+	background-color: #F2EFEA;
+}
+
+/*モバイルフッター バー*/
+.p-footer-sticky-nav {
+	font-size: 20px;
+	color: white;
+	padding: 0px;
+    margin: 0 auto;
+
+}
+.footernav_tel {
+    background-color: #6b1800;
+    padding: 5px;
+    font-size: 30px;
+}
+.footernav_line {
+    background-color: #0BB404;
+    padding: 5px;
+    font-size: 20px;
+}
+.footernav_form {
+    background-color: #DA6669;
+    padding: 5px;
+    font-size: 20px;
+}
+
+
+/*LINEお問い合わせ  Mobile 隙間*/
+.wp-block-image>figure, figure.wp-block-image {
+	padding: 0 !important;
+}
+/***********************
+* フロントページ
+***********************/
+.front__approach1 {
 	padding: 50px 0px;
 	background: white;
 	
 }
-.front__nayami2 {
+.front__approach2 {
 	padding: 50px 0px;
 	background: #F2EAE2;
 	
 }
-.front__access {
-	background-color: #F8F1E2;
-	margin: 0;
-}
 /***********************
-* first time
+* 固定ページ
 ***********************/
+/*固定ページ　アイキャッチ*/
+.c-page-header__title {
+	color: #86674d;
+}
 
-/*profile*/
+
+/***********************
+* 初めての方へ
+***********************/
 .firsttime__profile {
 	border: 1px solid;
 	border-color: #6c442a;
@@ -78,30 +87,48 @@ body {
 	width: 100%;
 	padding: 10px;
 }
-.firsttime__recommend {
-	border: 1px solid;
-	border-color: #6c442a;
-	width: 100%;
-	padding: 10px;
-	background-color: white;
+/********************
+* Q & A
+********************/
+/*スノーモンキー ボタン*/
+.is-style-ghost {
+	display: inline-block;
+	height: 46px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+    text-align: center;
+	vertical-align: middle;
 }
-.firsttime__recommend--message {
-	padding-top: 40px;
+.is-style-ghost:hover {
+	background: #e2d2c7;
+	border-radius: 15px;
+}
+
+.wp-block-column .smb-btn {
+	display: inline-block;
+	height: 46px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+    text-align: center;
+}
+.wp-block-column .smb-btn:hover {
+	background-color: #e2d2c7;
+	color: #6c442a;
+	border-radius: 15px;
+}
+.smb-btn {
+	width: 165px;
+	text-align: center;
+	vertical-align: middle;
+	padding: 8px;
+	color: white;
+	background: #86674d;
 }
 
 /***********************
-* voice
+* 患者様の声
 ***********************/
-/*voice tyuuou*/
-.voice {
-	display: block;
-	margin: 0 auto;
-}
-/*Googlemap*/
-.map{
-	display: block;
-	margin: 0 auto;
-}
+
 /*PC*/
 .voice__contents {
 	padding: 20px;
@@ -180,85 +207,19 @@ body {
 .voice__card {
 	box-shadow: 20px 100px 0 #F2EAE2;
 }
-/*frontaccess-button*/
-.is-style-ghost {
-	display: inline-block;
-	height: 46px;
-    cursor: pointer;
-    transition: all 0.3s ease 0s;
-    text-align: center;
-	vertical-align: middle;
-}
-.is-style-ghost:hover {
-	background: #e2d2c7;
-	border-radius: 15px;
-}
-
-.wp-block-column .smb-btn {
-	display: inline-block;
-	height: 46px;
-    cursor: pointer;
-    transition: all 0.3s ease 0s;
-    text-align: center;
-}
-.wp-block-column .smb-btn:hover {
-	background-color: #e2d2c7;
-	color: #6c442a;
-	border-radius: 15px;
-}
-.smb-btn {
-	width: 165px;
-	text-align: center;
-	vertical-align: middle;
-	padding: 8px;
+/*投稿者名削除*/
+.c-meta__item--author {
+	display: none;
 }
 /***********************
-* system
+* 料金システム
 ***********************/
 .system__fee {
 	padding: 16px;
 }
-/***********************
-* footer
-***********************/
 
-/*footer syoujou*/
-footer {
-	color: #6c442a;
-	background-color: #F2EFEA;
-}
-
-/*mobile footer bar bottom*/
-.p-footer-sticky-nav {
-	font-size: 20px;
-	color: white;
-	padding: 0px;
-    margin: 0 auto;
-
-}
-.footernav_tel {
-    background-color: #6b1800;
-    padding: 5px;
-    font-size: 30px;
-}
-.footernav_line {
-    background-color: #0BB404;
-    padding: 5px;
-    font-size: 20px;
-}
-.footernav_form {
-    background-color: #DA6669;
-    padding: 5px;
-    font-size: 20px;
-}
-
-
-/*LINEお問い合わせ  Mobile 隙間*/
-.wp-block-image>figure, figure.wp-block-image {
-	padding: 0 !important;
-}
 /********************
-* approach
+* 症状別アプローチ
 ********************/
 .approach__syoujou {
 	border: 1px solid;
@@ -269,17 +230,9 @@ footer {
 .approach__syoujou--cause {
 	padding: 10px;
 }
-.symptom__sports {
-	
-}
+
 /********************
-* blog 
-********************/
-.c-meta {
-	display: none;
-}
-/********************
-* blog voice
+* ブログ　患者様の声 
 ********************/
 /*投稿ページ文字ヘッダー消す*/
 .c-entry__header {
@@ -292,4 +245,11 @@ footer {
 
 .calender {
 	background-color: white;
+}
+
+/********************
+* 404 page
+********************/
+.error404 .l-contents__main {
+	margin-top: 72px;
 }
