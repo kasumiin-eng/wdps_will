@@ -31,19 +31,6 @@ define( 'MY_SNOW_MONKEY_URL', untrailingslashit( plugin_dir_url( __FILE__ ) ) );
  */
 define( 'MY_SNOW_MONKEY_PATH', untrailingslashit( plugin_dir_path( __FILE__ ) ) );
 
-add_action(
-	'snow_monkey_prepend_body',
-	function() {
-		?>
-		<div class="c-page-effect" data-page-effect="fadein" aria-hidden="false">
-			<div class="c-page-effect__item">
-				<div class="c-circle-spinner"></div>
-			</div>
-		</div>
-		<?php
-	}
-);
-
 // 実際のページ用の CSS 読み込み
 add_action(
 	'wp_enqueue_scripts',
